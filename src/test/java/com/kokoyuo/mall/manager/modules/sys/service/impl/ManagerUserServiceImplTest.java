@@ -55,4 +55,6 @@ public class ManagerUserServiceImplTest {
 
         System.out.println(JSONObject.toJSONString(userInfos));
     }
+
+
 }

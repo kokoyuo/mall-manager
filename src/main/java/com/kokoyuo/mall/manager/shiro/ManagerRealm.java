@@ -53,13 +53,9 @@ public class ManagerRealm extends AuthorizingRealm {
         String pwd = new String((char[]) tk.getCredentials());
 
         /*验证pwd 是否正确*/
-        //todo
-        if(true)
-        {
-            return new SimpleAuthenticationInfo(managerUserInfo.getUserName(),managerUserInfo.getUserPwd(),getName());
-        }
 
+        return new SimpleAuthenticationInfo(managerUserInfo.getUserName(),managerUserInfo.getUserPwd(),getName());
 
-        throw new UnknownAccountException();
+        //throw new UnknownAccountException();
     }
 }

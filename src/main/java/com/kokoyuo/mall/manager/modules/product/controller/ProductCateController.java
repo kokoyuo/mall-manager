@@ -1,10 +1,9 @@
 package com.kokoyuo.mall.manager.modules.product.controller;
 
+import com.kokoyuo.mall.manager.modules.product.service.ProductService;
 import com.kokoyuo.mall.manager.modules.sys.pojo.Result;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author kokoyuo
@@ -14,9 +13,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ProductCateController {
 
-    @PostMapping("/")
-    public Result get()
+    @Autowired
+    private ProductService productService;
+
+    @PostMapping("/page/{current_page}/{page_size}")
+    public Result get(@PathVariable Integer current_page,@PathVariable Integer page_size,
+                      @RequestParam String cateName,@RequestParam Integer parentId)
     {
+
         return Result.SUCCESS_INSTANCE;
     }
 }

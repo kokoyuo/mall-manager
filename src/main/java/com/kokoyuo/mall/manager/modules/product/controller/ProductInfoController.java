@@ -1,8 +1,10 @@
 package com.kokoyuo.mall.manager.modules.product.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.kokoyuo.mall.manager.modules.product.entity.ProductInfo;
 import com.kokoyuo.mall.manager.modules.product.service.ProductService;
 import com.kokoyuo.mall.manager.modules.sys.pojo.Result;
+import com.kokoyuo.mall.manager.modules.sys.pojo.Status;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
@@ -12,6 +14,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author kokoyuo
@@ -34,7 +39,7 @@ public class ProductInfoController {
                     @ApiImplicitParam(name = "isSale",paramType = "query",value = "是否上架",dataType = "Integer"),
                     @ApiImplicitParam(name = "sort",paramType = "query",value = "排序字段名",dataType = "String"),
             })
-    @GetMapping("/info/{current_page}/{page_size}")
+    @GetMapping("/page/{current_page}/{page_size}")
     public Result getProductList(@PathVariable Integer current_page, @PathVariable Integer page_size,
                                  @RequestParam(required = false) String name,@RequestParam(required = false) String fullName,
                                  @RequestParam(required = false) Integer isSale, @RequestParam(required = false) String sort)
@@ -48,6 +53,23 @@ public class ProductInfoController {
 
         Page<ProductInfo> page = productService.getProductPage(productInfo,pageable);
         return Result.getDefaultSuccessResult(page);
+    }
+
+    @ApiOperation(value = "获取单个产品详情",notes = "获取单个产品详情,包含其属性")
+    @ApiImplicitParam(name = "id",paramType = "path",value = "商品id",dataType = "Integer")
+    @GetMapping("/info/{id}")
+    public Result getProductInfo(@PathVariable Integer id)
+    {
+        ProductInfo productInfo = productService.getProductInfo(id);
+        if(productInfo==null)
+            return new Result(new Status(201,"产品信息为空"));
+
+        List<Map<String,Object>> cates = productService.getProductCates(id);
+
+        JSONObject proJo = JSONObject.parseObject(JSONObject.toJSONString(productInfo));
+        proJo.put("cate-attr",cates);
+
+        return Result.getDefaultSuccessResult(proJo);
     }
 
 }

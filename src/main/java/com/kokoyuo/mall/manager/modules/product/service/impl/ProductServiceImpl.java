@@ -10,6 +10,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * @author kokoyuo
  * Created on 2018/11/6.
@@ -29,5 +32,15 @@ public class ProductServiceImpl implements ProductService {
                 .withIgnorePaths("id");
         Example<ProductInfo> example = Example.of(productInfo,matcher);
         return productInfoRepository.findAll(example,pageable);
+    }
+
+    @Override
+    public ProductInfo getProductInfo(Integer productId) {
+        return productInfoRepository.findById(productId).orElse(null);
+    }
+
+    @Override
+    public List<Map<String, Object>> getProductCates(Integer productId) {
+        return productInfoRepository.getProductCates(productId);
     }
 }

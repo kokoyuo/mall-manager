@@ -11,7 +11,7 @@ import java.util.Objects;
 @Table(name = "product_cate", schema = "mall")
 public class ProductCate {
     private int id;
-    private String parentId;
+    private Integer parentId;
     private String cateName;
     private String cateDesc;
 
@@ -27,11 +27,11 @@ public class ProductCate {
 
     @Basic
     @Column(name = "PARENT_ID")
-    public String getParentId() {
+    public Integer getParentId() {
         return parentId;
     }
 
-    public void setParentId(String parentId) {
+    public void setParentId(Integer parentId) {
         this.parentId = parentId;
     }
 
