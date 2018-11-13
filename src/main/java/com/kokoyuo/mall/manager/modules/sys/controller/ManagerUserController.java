@@ -61,7 +61,7 @@ public class ManagerUserController {
                     @ApiImplicitParam(name = "userName",paramType = "query",value = "用户名",dataType = "String"),
                     @ApiImplicitParam(name = "userCode",paramType = "query",value = "user code",dataType = "String"),
             })
-    @GetMapping("/{current_page}/{page_size}")
+    @GetMapping("{page}/{current_page}/{page_size}")
     public Result getUserList(@PathVariable Integer current_page,@PathVariable Integer page_size,
                               @RequestParam(required = false) String userName,@RequestParam(required = false) String userCode)
     {

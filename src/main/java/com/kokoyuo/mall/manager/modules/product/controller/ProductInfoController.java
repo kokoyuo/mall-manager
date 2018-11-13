@@ -2,6 +2,7 @@ package com.kokoyuo.mall.manager.modules.product.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.kokoyuo.mall.manager.modules.product.entity.ProductInfo;
+import com.kokoyuo.mall.manager.modules.product.entity.ProductSku;
 import com.kokoyuo.mall.manager.modules.product.service.ProductService;
 import com.kokoyuo.mall.manager.modules.sys.pojo.Result;
 import com.kokoyuo.mall.manager.modules.sys.pojo.Status;
@@ -15,8 +16,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * @author kokoyuo
@@ -55,19 +58,32 @@ public class ProductInfoController {
         return Result.getDefaultSuccessResult(page);
     }
 
-    @ApiOperation(value = "获取单个产品详情",notes = "获取单个产品详情,包含其属性")
+    @ApiOperation(value = "获取单个产品组详情",notes = "获取单个产品组详情,包含其属性")
     @ApiImplicitParam(name = "id",paramType = "path",value = "商品id",dataType = "Integer")
     @GetMapping("/info/{id}")
     public Result getProductInfo(@PathVariable Integer id)
     {
         ProductInfo productInfo = productService.getProductInfo(id);
+
         if(productInfo==null)
             return new Result(new Status(201,"产品信息为空"));
 
-        List<Map<String,Object>> cates = productService.getProductCates(id);
+        /*获取SKU 信息*/
+        List<ProductSku> skus = productService.getSkus(id);
+
+        /*转换成JSONOBJ*/
+        List<JSONObject> skusObj = skus.parallelStream()
+                .map(productSku -> JSONObject.parseObject(JSONObject.toJSONString(productSku)))
+                .collect(Collectors.toList());
+
+        List<Map<String,Object>> productCates = productService.getProductCatesByProductId(id);
+
+        Map<Object,List<Map<String,Object>>> productCatesGroup = productCates.parallelStream().collect(Collectors.groupingBy(o -> o.get("SKU_ID")));
+
+        skusObj.forEach(jsonObject -> jsonObject.put("cates",productCatesGroup.getOrDefault(jsonObject.getInteger("id"),null)));
 
         JSONObject proJo = JSONObject.parseObject(JSONObject.toJSONString(productInfo));
-        proJo.put("cate-attr",cates);
+        proJo.put("skus",skusObj);
 
         return Result.getDefaultSuccessResult(proJo);
     }

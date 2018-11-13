@@ -7,21 +7,20 @@ import java.util.Objects;
 
 /**
  * @author kokoyuo
- * Created on 2018/11/5.
+ * Created on 2018/11/9.
  */
 public class ProductInfoCateAttrPK implements Serializable {
-    private int productId;
+    private int skuId;
     private int cateId;
-    private int attrId;
 
-    @Column(name = "PRODUCT_ID")
+    @Column(name = "SKU_ID")
     @Id
-    public int getProductId() {
-        return productId;
+    public int getSkuId() {
+        return skuId;
     }
 
-    public void setProductId(int productId) {
-        this.productId = productId;
+    public void setSkuId(int skuId) {
+        this.skuId = skuId;
     }
 
     @Column(name = "CATE_ID")
@@ -34,28 +33,17 @@ public class ProductInfoCateAttrPK implements Serializable {
         this.cateId = cateId;
     }
 
-    @Column(name = "ATTR_ID")
-    @Id
-    public int getAttrId() {
-        return attrId;
-    }
-
-    public void setAttrId(int attrId) {
-        this.attrId = attrId;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ProductInfoCateAttrPK that = (ProductInfoCateAttrPK) o;
-        return productId == that.productId &&
-                cateId == that.cateId &&
-                attrId == that.attrId;
+        return skuId == that.skuId &&
+                cateId == that.cateId;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(productId, cateId, attrId);
+        return Objects.hash(skuId, cateId);
     }
 }

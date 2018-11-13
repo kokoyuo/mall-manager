@@ -1,6 +1,7 @@
 package com.kokoyuo.mall.manager.modules.product.service;
 
 import com.kokoyuo.mall.manager.modules.product.entity.ProductInfo;
+import com.kokoyuo.mall.manager.modules.product.entity.ProductSku;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -16,5 +17,7 @@ public interface ProductService {
 
     ProductInfo getProductInfo(Integer productId);
 
-    List<Map<String,Object>> getProductCates(Integer productId);
+    List<Map<String,Object>> getProductCatesByProductId(Integer productId);
+
+    List<ProductSku> getSkus(Integer productId);
 }

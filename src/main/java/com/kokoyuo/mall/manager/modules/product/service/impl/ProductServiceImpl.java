@@ -1,7 +1,9 @@
 package com.kokoyuo.mall.manager.modules.product.service.impl;
 
 import com.kokoyuo.mall.manager.modules.product.dao.ProductInfoRepository;
+import com.kokoyuo.mall.manager.modules.product.dao.ProductSkuRepository;
 import com.kokoyuo.mall.manager.modules.product.entity.ProductInfo;
+import com.kokoyuo.mall.manager.modules.product.entity.ProductSku;
 import com.kokoyuo.mall.manager.modules.product.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
@@ -23,6 +25,9 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     private ProductInfoRepository productInfoRepository;
 
+    @Autowired
+    private ProductSkuRepository productSkuRepository;
+
     @Override
     public Page<ProductInfo> getProductPage(ProductInfo productInfo, Pageable pageable)
     {
@@ -40,7 +45,12 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Map<String, Object>> getProductCates(Integer productId) {
-        return productInfoRepository.getProductCates(productId);
+    public List<Map<String, Object>> getProductCatesByProductId(Integer productId) {
+        return productInfoRepository.getProductCatesByProductId(productId);
+    }
+
+    @Override
+    public List<ProductSku> getSkus(Integer productId) {
+        return productSkuRepository.findByProductId(productId);
     }
 }

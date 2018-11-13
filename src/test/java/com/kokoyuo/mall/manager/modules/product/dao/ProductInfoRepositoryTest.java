@@ -24,7 +24,7 @@ public class ProductInfoRepositoryTest {
 
     @Test
     public void getProductInfo() {
-        List<Map<String,Object>> maps = productInfoRepository.getProductInfo(1);
+        List<Map<String,Object>> maps = productInfoRepository.getProductCatesByProductId(1);
         maps.forEach(stringObjectMap -> stringObjectMap.forEach((x,y) -> System.out.println(y)));
     }
 }

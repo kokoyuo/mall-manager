@@ -13,7 +13,7 @@ import java.util.Map;
  * Created on 2018/11/6.
  */
 public interface ProductInfoRepository extends JpaRepository<ProductInfo,Integer> {
-    @Query(value = " select ica.PRODUCT_ID,ica.CATE_ID,ica.ATTR_ID,pc.PARENT_ID, " +
+    @Query(value = " select ica.PRODUCT_ID,ica.SKU_ID,ica.CATE_ID,ica.ATTR_ID,pc.PARENT_ID, " +
             " pc.CATE_NAME,pca.ATTR_NAME " +
             " from product_info_cate_attr ica " +
             " LEFT JOIN product_cate pc " +
@@ -21,5 +21,5 @@ public interface ProductInfoRepository extends JpaRepository<ProductInfo,Integer
             " LEFT JOIN product_cate_attr pca " +
             " ON ica.ATTR_ID = pca.ID " +
             " where ica.PRODUCT_ID = :productId ",nativeQuery = true)
-    List<Map<String,Object>> getProductCates(@Param(value = "productId") Integer productId);
+    List<Map<String,Object>> getProductCatesByProductId(@Param(value = "productId") Integer productId);
 }

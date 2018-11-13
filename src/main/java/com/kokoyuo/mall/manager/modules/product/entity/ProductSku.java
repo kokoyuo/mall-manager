@@ -3,26 +3,26 @@ package com.kokoyuo.mall.manager.modules.product.entity;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
-import java.util.List;
 import java.util.Objects;
 
 /**
  * @author kokoyuo
- * Created on 2018/11/5.
+ * Created on 2018/11/9.
  */
 @Entity
-@Table(name = "product_info", schema = "mall")
-public class ProductInfo {
+@Table(name = "product_sku", schema = "mall")
+public class ProductSku {
     private int id;
+    private Integer productId;
     private String name;
     private String fullName;
     private BigDecimal price;
+    private BigDecimal cost;
     private String image;
     private Integer isSale;
     private String introduction;
     private Timestamp createDate;
     private Timestamp modifyDate;
-
 
     @Id
     @Column(name = "ID")
@@ -32,6 +32,16 @@ public class ProductInfo {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    @Basic
+    @Column(name = "PRODUCT_ID")
+    public Integer getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Integer productId) {
+        this.productId = productId;
     }
 
     @Basic
@@ -62,6 +72,16 @@ public class ProductInfo {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    @Basic
+    @Column(name = "COST")
+    public BigDecimal getCost() {
+        return cost;
+    }
+
+    public void setCost(BigDecimal cost) {
+        this.cost = cost;
     }
 
     @Basic
@@ -118,11 +138,13 @@ public class ProductInfo {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ProductInfo that = (ProductInfo) o;
+        ProductSku that = (ProductSku) o;
         return id == that.id &&
+                Objects.equals(productId, that.productId) &&
                 Objects.equals(name, that.name) &&
                 Objects.equals(fullName, that.fullName) &&
                 Objects.equals(price, that.price) &&
+                Objects.equals(cost, that.cost) &&
                 Objects.equals(image, that.image) &&
                 Objects.equals(isSale, that.isSale) &&
                 Objects.equals(introduction, that.introduction) &&
@@ -132,6 +154,6 @@ public class ProductInfo {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, fullName, price, image, isSale, introduction, createDate, modifyDate);
+        return Objects.hash(id, productId, name, fullName, price, cost, image, isSale, introduction, createDate, modifyDate);
     }
 }
