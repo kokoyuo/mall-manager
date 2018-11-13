@@ -6,6 +6,7 @@ import com.kokoyuo.mall.manager.modules.product.entity.ProductSku;
 import com.kokoyuo.mall.manager.modules.product.service.ProductService;
 import com.kokoyuo.mall.manager.modules.sys.pojo.Result;
 import com.kokoyuo.mall.manager.modules.sys.pojo.Status;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
@@ -25,6 +26,7 @@ import java.util.stream.Collectors;
  * @author kokoyuo
  * Created on 2018/11/6.
  */
+@Api(value = "产品相关接口",description = "产品相关接口")
 @RequestMapping("/product")
 @RestController
 public class ProductInfoController {

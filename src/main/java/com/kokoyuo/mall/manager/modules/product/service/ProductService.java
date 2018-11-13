@@ -1,5 +1,7 @@
 package com.kokoyuo.mall.manager.modules.product.service;
 
+import com.kokoyuo.mall.manager.modules.product.entity.ProductCate;
+import com.kokoyuo.mall.manager.modules.product.entity.ProductCateAttr;
 import com.kokoyuo.mall.manager.modules.product.entity.ProductInfo;
 import com.kokoyuo.mall.manager.modules.product.entity.ProductSku;
 import org.springframework.data.domain.Page;
@@ -20,4 +22,12 @@ public interface ProductService {
     List<Map<String,Object>> getProductCatesByProductId(Integer productId);
 
     List<ProductSku> getSkus(Integer productId);
+
+    Page<ProductCate> getCatesPage(ProductCate productCate,Pageable pageable);
+
+    List<ProductCateAttr> getAttrListByCateId(Integer cateId);
+
+    ProductCate saveCate(ProductCate productCate);
+
+    ProductCateAttr saveAttr(ProductCateAttr productCateAttr);
 }
