@@ -78,10 +78,13 @@ public class ProductInfoController {
                 .map(productSku -> JSONObject.parseObject(JSONObject.toJSONString(productSku)))
                 .collect(Collectors.toList());
 
+        /*获取产品属性信息*/
         List<Map<String,Object>> productCates = productService.getProductCatesByProductId(id);
 
+        /*将属性按sku-id 分类*/
         Map<Object,List<Map<String,Object>>> productCatesGroup = productCates.parallelStream().collect(Collectors.groupingBy(o -> o.get("SKU_ID")));
 
+        /*将sku 的属性组装到 skusObj*/
         skusObj.forEach(jsonObject -> jsonObject.put("cates",productCatesGroup.getOrDefault(jsonObject.getInteger("id"),null)));
 
         JSONObject proJo = JSONObject.parseObject(JSONObject.toJSONString(productInfo));
