@@ -25,7 +25,7 @@ public class ProductInfo {
 
 
     @Id
-    @Column(name = "ID")
+    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -35,7 +35,7 @@ public class ProductInfo {
     }
 
     @Basic
-    @Column(name = "NAME")
+    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -45,7 +45,7 @@ public class ProductInfo {
     }
 
     @Basic
-    @Column(name = "FULL_NAME")
+    @Column(name = "full_name")
     public String getFullName() {
         return fullName;
     }
@@ -55,7 +55,7 @@ public class ProductInfo {
     }
 
     @Basic
-    @Column(name = "PRICE")
+    @Column(name = "price")
     public BigDecimal getPrice() {
         return price;
     }
@@ -65,7 +65,7 @@ public class ProductInfo {
     }
 
     @Basic
-    @Column(name = "IMAGE")
+    @Column(name = "image")
     public String getImage() {
         return image;
     }
@@ -75,7 +75,7 @@ public class ProductInfo {
     }
 
     @Basic
-    @Column(name = "IS_SALE")
+    @Column(name = "is_sale")
     public Integer getIsSale() {
         return isSale;
     }
@@ -85,7 +85,7 @@ public class ProductInfo {
     }
 
     @Basic
-    @Column(name = "INTRODUCTION")
+    @Column(name = "introduction")
     public String getIntroduction() {
         return introduction;
     }
@@ -95,7 +95,7 @@ public class ProductInfo {
     }
 
     @Basic
-    @Column(name = "CREATE_DATE")
+    @Column(name = "create_date")
     public Timestamp getCreateDate() {
         return createDate;
     }
@@ -105,7 +105,7 @@ public class ProductInfo {
     }
 
     @Basic
-    @Column(name = "MODIFY_DATE")
+    @Column(name = "modify_date")
     public Timestamp getModifyDate() {
         return modifyDate;
     }

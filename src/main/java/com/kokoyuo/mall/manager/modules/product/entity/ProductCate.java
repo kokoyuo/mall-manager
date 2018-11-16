@@ -16,7 +16,7 @@ public class ProductCate {
     private String cateDesc;
 
     @Id
-    @Column(name = "ID")
+    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -26,7 +26,7 @@ public class ProductCate {
     }
 
     @Basic
-    @Column(name = "PARENT_ID")
+    @Column(name = "parent_id")
     public Integer getParentId() {
         return parentId;
     }
@@ -36,7 +36,7 @@ public class ProductCate {
     }
 
     @Basic
-    @Column(name = "CATE_NAME")
+    @Column(name = "cate_name")
     public String getCateName() {
         return cateName;
     }
@@ -46,7 +46,7 @@ public class ProductCate {
     }
 
     @Basic
-    @Column(name = "CATE_DESC")
+    @Column(name = "cate_desc")
     public String getCateDesc() {
         return cateDesc;
     }

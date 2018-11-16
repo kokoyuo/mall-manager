@@ -1,6 +1,11 @@
 package com.kokoyuo.mall.manager.modules.sys.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.parser.Feature;
+import com.alibaba.fastjson.serializer.NameFilter;
+import com.alibaba.fastjson.serializer.SerializeFilter;
+import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.alibaba.fastjson.serializer.SimplePropertyPreFilter;
 import com.kokoyuo.mall.manager.Swagger2;
 import com.kokoyuo.mall.manager.shiro.ManagerUserInfo;
 import com.kokoyuo.mall.manager.modules.sys.pojo.Result;
@@ -50,7 +55,9 @@ public class ManagerLoginController
         }
         String token = (String) subject.getSession().getId();
         ManagerUserInfo managerUserInfo = managerUserService.findByUsername(userName);
-        JSONObject jsonObject = JSONObject.parseObject(JSONObject.toJSONString(managerUserInfo));
+        SimplePropertyPreFilter filter = new SimplePropertyPreFilter();
+        filter.getExcludes().add("userPwd");
+        JSONObject jsonObject = JSONObject.parseObject(JSONObject.toJSONString(managerUserInfo,filter));
         jsonObject.put(Swagger2.TOKEN_HEAD,token);
         return new Result(new Status(Status.RETURN_TYPE.SUCCESS),jsonObject);
     }

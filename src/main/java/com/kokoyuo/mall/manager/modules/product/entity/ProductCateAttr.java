@@ -16,7 +16,7 @@ public class ProductCateAttr {
     private String attrDesc;
 
     @Id
-    @Column(name = "ID")
+    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -26,7 +26,7 @@ public class ProductCateAttr {
     }
 
     @Basic
-    @Column(name = "CATE_ID")
+    @Column(name = "cate_id")
     public Integer getCateId() {
         return cateId;
     }
@@ -36,7 +36,7 @@ public class ProductCateAttr {
     }
 
     @Basic
-    @Column(name = "ATTR_NAME")
+    @Column(name = "attr_name")
     public String getAttrName() {
         return attrName;
     }
@@ -46,7 +46,7 @@ public class ProductCateAttr {
     }
 
     @Basic
-    @Column(name = "ATTR_DESC")
+    @Column(name = "attr_desc")
     public String getAttrDesc() {
         return attrDesc;
     }

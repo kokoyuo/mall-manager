@@ -11,6 +11,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "file_info", schema = "mall")
 public class FileInfo {
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String fileDesc;
     private String area;
@@ -21,7 +22,7 @@ public class FileInfo {
     private Timestamp modifyDate;
 
     @Id
-    @Column(name = "ID")
+    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -31,7 +32,7 @@ public class FileInfo {
     }
 
     @Basic
-    @Column(name = "FILE_DESC")
+    @Column(name = "file_desc")
     public String getFileDesc() {
         return fileDesc;
     }
@@ -41,7 +42,7 @@ public class FileInfo {
     }
 
     @Basic
-    @Column(name = "AREA")
+    @Column(name = "area")
     public String getArea() {
         return area;
     }
@@ -51,7 +52,7 @@ public class FileInfo {
     }
 
     @Basic
-    @Column(name = "FILE_PATH")
+    @Column(name = "file_path")
     public String getFilePath() {
         return filePath;
     }
@@ -61,7 +62,7 @@ public class FileInfo {
     }
 
     @Basic
-    @Column(name = "FILE_NAME")
+    @Column(name = "file_name")
     public String getFileName() {
         return fileName;
     }
@@ -71,7 +72,7 @@ public class FileInfo {
     }
 
     @Basic
-    @Column(name = "FILE_POSTFIX")
+    @Column(name = "file_postfix")
     public String getFilePostfix() {
         return filePostfix;
     }
@@ -81,7 +82,7 @@ public class FileInfo {
     }
 
     @Basic
-    @Column(name = "CREATE_DATE")
+    @Column(name = "create_date")
     public Timestamp getCreateDate() {
         return createDate;
     }
@@ -91,7 +92,7 @@ public class FileInfo {
     }
 
     @Basic
-    @Column(name = "MODIFY_DATE")
+    @Column(name = "modify_date")
     public Timestamp getModifyDate() {
         return modifyDate;
     }

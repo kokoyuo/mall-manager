@@ -25,7 +25,7 @@ public class ProductSku {
     private Timestamp modifyDate;
 
     @Id
-    @Column(name = "ID")
+    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -35,7 +35,7 @@ public class ProductSku {
     }
 
     @Basic
-    @Column(name = "PRODUCT_ID")
+    @Column(name = "product_id")
     public Integer getProductId() {
         return productId;
     }
@@ -45,7 +45,7 @@ public class ProductSku {
     }
 
     @Basic
-    @Column(name = "NAME")
+    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -55,7 +55,7 @@ public class ProductSku {
     }
 
     @Basic
-    @Column(name = "FULL_NAME")
+    @Column(name = "full_name")
     public String getFullName() {
         return fullName;
     }
@@ -65,7 +65,7 @@ public class ProductSku {
     }
 
     @Basic
-    @Column(name = "PRICE")
+    @Column(name = "price")
     public BigDecimal getPrice() {
         return price;
     }
@@ -75,7 +75,7 @@ public class ProductSku {
     }
 
     @Basic
-    @Column(name = "COST")
+    @Column(name = "cost")
     public BigDecimal getCost() {
         return cost;
     }
@@ -85,7 +85,7 @@ public class ProductSku {
     }
 
     @Basic
-    @Column(name = "IMAGE")
+    @Column(name = "image")
     public String getImage() {
         return image;
     }
@@ -95,7 +95,7 @@ public class ProductSku {
     }
 
     @Basic
-    @Column(name = "IS_SALE")
+    @Column(name = "is_sale")
     public Integer getIsSale() {
         return isSale;
     }
@@ -105,7 +105,7 @@ public class ProductSku {
     }
 
     @Basic
-    @Column(name = "INTRODUCTION")
+    @Column(name = "introduction")
     public String getIntroduction() {
         return introduction;
     }
@@ -115,7 +115,7 @@ public class ProductSku {
     }
 
     @Basic
-    @Column(name = "CREATE_DATE")
+    @Column(name = "create_date")
     public Timestamp getCreateDate() {
         return createDate;
     }
@@ -125,7 +125,7 @@ public class ProductSku {
     }
 
     @Basic
-    @Column(name = "MODIFY_DATE")
+    @Column(name = "modify_date")
     public Timestamp getModifyDate() {
         return modifyDate;
     }

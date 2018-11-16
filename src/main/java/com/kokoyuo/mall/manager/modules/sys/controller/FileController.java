@@ -52,7 +52,7 @@ public class FileController {
 
         String fileName = file.getOriginalFilename();
         String postfixName = fileName.substring(fileName.lastIndexOf("."));
-        String fileLocal = request.getSession().getServletContext().getRealPath("/")+properties.getFolderPath()+ UUID.randomUUID()+postfixName;
+        String fileLocal = new File(request.getSession().getServletContext().getRealPath("/")).getParent()+properties.getFolderPath()+ UUID.randomUUID()+postfixName;
         /*获取当前域名及项目位置*/
         String path = request.getContextPath();
         String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";

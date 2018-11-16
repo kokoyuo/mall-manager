@@ -22,7 +22,7 @@ public class ManagerRoleInfo {
     private Integer state;
 
     @Id
-    @Column(name = "ID")
+    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -32,7 +32,7 @@ public class ManagerRoleInfo {
     }
 
     @Basic
-    @Column(name = "ROLE_CODE")
+    @Column(name = "role_code")
     public String getRoleCode() {
         return roleCode;
     }
@@ -42,7 +42,7 @@ public class ManagerRoleInfo {
     }
 
     @Basic
-    @Column(name = "ROLE_NAME")
+    @Column(name = "role_name")
     public String getRoleName() {
         return roleName;
     }
@@ -52,7 +52,7 @@ public class ManagerRoleInfo {
     }
 
     @Basic
-    @Column(name = "CREATE_BY")
+    @Column(name = "create_by")
     public String getCreateBy() {
         return createBy;
     }
@@ -62,7 +62,7 @@ public class ManagerRoleInfo {
     }
 
     @Basic
-    @Column(name = "CREATE_DATE")
+    @Column(name = "create_date")
     public Timestamp getCreateDate() {
         return createDate;
     }
@@ -72,7 +72,7 @@ public class ManagerRoleInfo {
     }
 
     @Basic
-    @Column(name = "MODIFIED_BY")
+    @Column(name = "modified_by")
     public String getModifiedBy() {
         return modifiedBy;
     }
@@ -82,7 +82,7 @@ public class ManagerRoleInfo {
     }
 
     @Basic
-    @Column(name = "MODIFIED_DATE")
+    @Column(name = "modified_date")
     public Timestamp getModifiedDate() {
         return modifiedDate;
     }
@@ -92,7 +92,7 @@ public class ManagerRoleInfo {
     }
 
     @Basic
-    @Column(name = "SORTNO")
+    @Column(name = "sortno")
     public Integer getSortno() {
         return sortno;
     }
@@ -102,7 +102,7 @@ public class ManagerRoleInfo {
     }
 
     @Basic
-    @Column(name = "STATE")
+    @Column(name = "state")
     public Integer getState() {
         return state;
     }

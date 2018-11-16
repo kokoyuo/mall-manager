@@ -13,7 +13,7 @@ public class ProductInfoCateAttrPK implements Serializable {
     private int skuId;
     private int cateId;
 
-    @Column(name = "SKU_ID")
+    @Column(name = "sku_id")
     @Id
     public int getSkuId() {
         return skuId;
@@ -23,7 +23,7 @@ public class ProductInfoCateAttrPK implements Serializable {
         this.skuId = skuId;
     }
 
-    @Column(name = "CATE_ID")
+    @Column(name = "cate_id")
     @Id
     public int getCateId() {
         return cateId;

@@ -17,7 +17,7 @@ public class ProductInfoCateAttr {
     private int attrId;
 
     @Basic
-    @Column(name = "PRODUCT_ID")
+    @Column(name = "product_id")
     public int getProductId() {
         return productId;
     }
@@ -27,7 +27,7 @@ public class ProductInfoCateAttr {
     }
 
     @Id
-    @Column(name = "SKU_ID")
+    @Column(name = "sku_id")
     public int getSkuId() {
         return skuId;
     }
@@ -37,7 +37,7 @@ public class ProductInfoCateAttr {
     }
 
     @Id
-    @Column(name = "CATE_ID")
+    @Column(name = "cate_id")
     public int getCateId() {
         return cateId;
     }
@@ -47,7 +47,7 @@ public class ProductInfoCateAttr {
     }
 
     @Basic
-    @Column(name = "ATTR_ID")
+    @Column(name = "attr_id")
     public int getAttrId() {
         return attrId;
     }
