@@ -1,9 +1,6 @@
 package com.kokoyuo.mall.manager.modules.product.service.impl;
 
-import com.kokoyuo.mall.manager.modules.product.dao.ProductCateAttrRepository;
-import com.kokoyuo.mall.manager.modules.product.dao.ProductCateRepository;
-import com.kokoyuo.mall.manager.modules.product.dao.ProductInfoRepository;
-import com.kokoyuo.mall.manager.modules.product.dao.ProductSkuRepository;
+import com.kokoyuo.mall.manager.modules.product.dao.*;
 import com.kokoyuo.mall.manager.modules.product.entity.ProductCate;
 import com.kokoyuo.mall.manager.modules.product.entity.ProductCateAttr;
 import com.kokoyuo.mall.manager.modules.product.entity.ProductInfo;
@@ -15,6 +12,7 @@ import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Map;
@@ -37,6 +35,9 @@ public class ProductServiceImpl implements ProductService {
 
     @Autowired
     private ProductCateAttrRepository productCateAttrRepository;
+
+    @Autowired
+    private ProductInfoCateAttrRepository productInfoCateAttrRepository;
 
     @Override
     public Page<ProductInfo> getProductPage(ProductInfo productInfo, Pageable pageable)
@@ -87,5 +88,34 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ProductCateAttr saveAttr(ProductCateAttr productCateAttr) {
         return productCateAttrRepository.save(productCateAttr);
+    }
+
+    @Override
+    @Transactional
+    public ProductInfo saveProductInfo(ProductInfo productInfo) {
+        ProductInfo tempProductInfo = productInfoRepository.save(productInfo);
+
+        productInfo.getSkus().forEach(sku -> {
+            sku.setProductId(tempProductInfo.getId());
+            saveProductSku(sku);
+        });
+
+        return productInfoRepository.save(productInfo);
+    }
+
+    @Override
+    @Transactional
+    public ProductSku saveProductSku(ProductSku productSku)
+    {
+        ProductSku tempSku = productSkuRepository.save(productSku);
+        /*删除之前的cates*/
+        productInfoCateAttrRepository.deleteByProductId(productSku.getProductId());
+
+        productSku.getCateAttrs().forEach(cateAttr -> {
+            cateAttr.setSkuId(tempSku.getId());
+            cateAttr.setProductId(productSku.getProductId());
+            productInfoCateAttrRepository.save(cateAttr);
+        });
+        return tempSku;
     }
 }

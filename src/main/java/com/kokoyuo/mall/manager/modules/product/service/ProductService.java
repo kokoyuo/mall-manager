@@ -30,4 +30,8 @@ public interface ProductService {
     ProductCate saveCate(ProductCate productCate);
 
     ProductCateAttr saveAttr(ProductCateAttr productCateAttr);
+
+    ProductInfo saveProductInfo(ProductInfo productInfo);
+
+    ProductSku saveProductSku(ProductSku productSku);
 }

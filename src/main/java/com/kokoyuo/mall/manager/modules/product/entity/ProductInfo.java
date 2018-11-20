@@ -23,6 +23,8 @@ public class ProductInfo {
     private Timestamp createDate;
     private Timestamp modifyDate;
 
+    private List<ProductSku> skus;
+
 
     @Id
     @Column(name = "id")
@@ -114,6 +116,15 @@ public class ProductInfo {
         this.modifyDate = modifyDate;
     }
 
+    @Transient
+    public List<ProductSku> getSkus() {
+        return skus;
+    }
+
+    public void setSkus(List<ProductSku> skus) {
+        this.skus = skus;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -127,11 +138,12 @@ public class ProductInfo {
                 Objects.equals(isSale, that.isSale) &&
                 Objects.equals(introduction, that.introduction) &&
                 Objects.equals(createDate, that.createDate) &&
-                Objects.equals(modifyDate, that.modifyDate);
+                Objects.equals(modifyDate, that.modifyDate) &&
+                Objects.equals(skus, that.skus);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, fullName, price, image, isSale, introduction, createDate, modifyDate);
+        return Objects.hash(id, name, fullName, price, image, isSale, introduction, createDate, modifyDate,skus);
     }
 }

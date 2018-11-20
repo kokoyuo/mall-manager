@@ -11,4 +11,5 @@ import java.util.List;
  */
 public interface ProductSkuRepository extends JpaRepository<ProductSku,Integer> {
     List<ProductSku> findByProductId(Integer productId);
+
 }

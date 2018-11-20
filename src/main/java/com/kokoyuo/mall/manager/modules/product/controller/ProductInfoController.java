@@ -93,4 +93,11 @@ public class ProductInfoController {
         return Result.getDefaultSuccessResult(proJo);
     }
 
+    @PostMapping("")
+    public Result saveProduct(@RequestBody ProductInfo productInfo)
+    {
+        productService.saveProductInfo(productInfo);
+        return Result.SUCCESS_INSTANCE;
+    }
+
 }

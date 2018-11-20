@@ -11,48 +11,48 @@ import java.util.Objects;
 @Table(name = "product_info_cate_attr", schema = "mall")
 @IdClass(ProductInfoCateAttrPK.class)
 public class ProductInfoCateAttr {
-    private int productId;
-    private int skuId;
-    private int cateId;
-    private int attrId;
+    private Integer productId;
+    private Integer skuId;
+    private Integer cateId;
+    private Integer attrId;
 
     @Basic
     @Column(name = "product_id")
-    public int getProductId() {
+    public Integer getProductId() {
         return productId;
     }
 
-    public void setProductId(int productId) {
+    public void setProductId(Integer productId) {
         this.productId = productId;
     }
 
     @Id
     @Column(name = "sku_id")
-    public int getSkuId() {
+    public Integer getSkuId() {
         return skuId;
     }
 
-    public void setSkuId(int skuId) {
+    public void setSkuId(Integer skuId) {
         this.skuId = skuId;
     }
 
     @Id
     @Column(name = "cate_id")
-    public int getCateId() {
+    public Integer getCateId() {
         return cateId;
     }
 
-    public void setCateId(int cateId) {
+    public void setCateId(Integer cateId) {
         this.cateId = cateId;
     }
 
     @Basic
     @Column(name = "attr_id")
-    public int getAttrId() {
+    public Integer getAttrId() {
         return attrId;
     }
 
-    public void setAttrId(int attrId) {
+    public void setAttrId(Integer attrId) {
         this.attrId = attrId;
     }
 
@@ -61,10 +61,10 @@ public class ProductInfoCateAttr {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ProductInfoCateAttr that = (ProductInfoCateAttr) o;
-        return productId == that.productId &&
-                skuId == that.skuId &&
-                cateId == that.cateId &&
-                attrId == that.attrId;
+        return productId.equals(that.productId) &&
+                skuId.equals(that.skuId) &&
+                cateId.equals(that.cateId) &&
+                attrId.equals(that.attrId);
     }
 
     @Override

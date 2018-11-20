@@ -3,6 +3,7 @@ package com.kokoyuo.mall.manager.modules.product.entity;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -23,6 +24,8 @@ public class ProductSku {
     private String introduction;
     private Timestamp createDate;
     private Timestamp modifyDate;
+
+    private List<ProductInfoCateAttr> cateAttrs;
 
     @Id
     @Column(name = "id")
@@ -134,6 +137,15 @@ public class ProductSku {
         this.modifyDate = modifyDate;
     }
 
+    @Transient
+    public List<ProductInfoCateAttr> getCateAttrs() {
+        return cateAttrs;
+    }
+
+    public void setCateAttrs(List<ProductInfoCateAttr> cateAttrs) {
+        this.cateAttrs = cateAttrs;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -149,11 +161,12 @@ public class ProductSku {
                 Objects.equals(isSale, that.isSale) &&
                 Objects.equals(introduction, that.introduction) &&
                 Objects.equals(createDate, that.createDate) &&
-                Objects.equals(modifyDate, that.modifyDate);
+                Objects.equals(modifyDate, that.modifyDate) &&
+                Objects.equals(cateAttrs, that.cateAttrs);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, productId, name, fullName, price, cost, image, isSale, introduction, createDate, modifyDate);
+        return Objects.hash(id, productId, name, fullName, price, cost, image, isSale, introduction, createDate, modifyDate,cateAttrs);
     }
 }
