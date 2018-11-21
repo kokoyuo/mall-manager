@@ -1,5 +1,7 @@
 package com.kokoyuo.mall.manager.shiro;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Objects;
@@ -15,8 +17,10 @@ public class ManagerRoleInfo {
     private String roleCode;
     private String roleName;
     private String createBy;
+    @ApiModelProperty(dataType = "java.util.Date")
     private Timestamp createDate;
     private String modifiedBy;
+    @ApiModelProperty(dataType = "java.util.Date")
     private Timestamp modifiedDate;
     private Integer sortno;
     private Integer state;

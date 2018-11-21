@@ -2,11 +2,16 @@ package com.kokoyuo.mall.manager.modules.sys.pojo;
 
 
 import com.alibaba.fastjson.annotation.JSONField;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
+@ApiModel(value = "返回结构")
 public class Result {
 
+    @ApiModelProperty(name = "状态",notes = "请求结果状态信息")
     private Status status;
 
+    @ApiModelProperty(name = "数据",notes = "请求返回业务数据")
     private Object data;
 
     public static final Result SUCCESS_INSTANCE = new Result(Status.SUCCESS_INSTANCE);

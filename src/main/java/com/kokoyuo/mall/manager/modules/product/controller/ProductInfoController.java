@@ -93,10 +93,19 @@ public class ProductInfoController {
         return Result.getDefaultSuccessResult(proJo);
     }
 
+    @ApiOperation(value = "保存产品信息",notes = "保存产品信息")
     @PostMapping("")
     public Result saveProduct(@RequestBody ProductInfo productInfo)
     {
         productService.saveProductInfo(productInfo);
+        return Result.SUCCESS_INSTANCE;
+    }
+
+    @ApiOperation(value = "保存sku信息",notes = "保存sku信息")
+    @PostMapping("/sku")
+    public Result saveSku(@RequestBody ProductSku productSku)
+    {
+        productService.saveProductSku(productSku);
         return Result.SUCCESS_INSTANCE;
     }
 

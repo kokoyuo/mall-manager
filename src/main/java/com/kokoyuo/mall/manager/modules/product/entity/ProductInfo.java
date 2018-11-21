@@ -1,5 +1,7 @@
 package com.kokoyuo.mall.manager.modules.product.entity;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
@@ -20,7 +22,9 @@ public class ProductInfo {
     private String image;
     private Integer isSale;
     private String introduction;
+    @ApiModelProperty(dataType = "java.util.Date")
     private Timestamp createDate;
+    @ApiModelProperty(dataType = "java.util.Date")
     private Timestamp modifyDate;
 
     private List<ProductSku> skus;

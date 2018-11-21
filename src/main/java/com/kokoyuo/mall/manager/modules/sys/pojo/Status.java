@@ -1,8 +1,10 @@
 package com.kokoyuo.mall.manager.modules.sys.pojo;
 
 
-import com.alibaba.fastjson.annotation.JSONField;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
+@ApiModel(value = "返回状态信息")
 public class Status{
 
     public enum RETURN_TYPE{
@@ -19,13 +21,14 @@ public class Status{
 
     public static final Status FAILED_INSTANCE = new Status(RETURN_TYPE.FAILED);
 
+    @ApiModelProperty(value = "状态码",name = "code")
     private int code;
+    @ApiModelProperty(value = "状态信息",name = "msg")
     private String msg;
 
 
     /**
      * 状态码，200标示成功，其他任何值标示失败
-     * @return
      */
     public int getCode() {
         return code;
@@ -33,7 +36,6 @@ public class Status{
 
     /**
      * 状态码，0标示成功，其他任何值标示失败
-     * @return
      */
     public void setCode(int code) {
         this.code = code;

@@ -109,9 +109,9 @@ public class ProductServiceImpl implements ProductService {
     {
         ProductSku tempSku = productSkuRepository.save(productSku);
         /*删除之前的cates*/
-        productInfoCateAttrRepository.deleteByProductId(productSku.getProductId());
+        productInfoCateAttrRepository.deleteBySkuId(productSku.getId());
 
-        productSku.getCateAttrs().forEach(cateAttr -> {
+        productSku.getCateAttrs().stream().forEach(cateAttr -> {
             cateAttr.setSkuId(tempSku.getId());
             cateAttr.setProductId(productSku.getProductId());
             productInfoCateAttrRepository.save(cateAttr);
